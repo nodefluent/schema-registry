@@ -1,0 +1,39 @@
+{
+  "name": "schema-registry",
+  "version": "0.9.1",
+  "description": "avro schema registry",
+  "main": "index.js",
+  "scripts": {
+    "test": "istanbul cover _mocha -- --recursive --timeout 12500 -R spec test/int && istanbul check-coverage --statements 60"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krystianity/schema-registry.git"
+  },
+  "keywords": [
+    "schema",
+    "registry",
+    "avro",
+    "json",
+    "rest",
+    "kafka"
+  ],
+  "author": "Chris Froehlingsdorf <chris@5cf.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/krystianity/schema-registry/issues"
+  },
+  "homepage": "https://github.com/krystianity/schema-registry#readme",
+  "dependencies": {
+    "avsc": "^5.0.1",
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "request": "^2.81.0",
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.2",
+    "mocha": "^3.3.0"
+  }
+}

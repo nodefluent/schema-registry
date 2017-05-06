@@ -1,0 +1,9 @@
+docs
+.idea
+coverage
+logs
+test
+Dockerfile
+docker-compose.yml
+.editorconfig
+.travis.yml

@@ -1,0 +1,11 @@
+{
+  "registry": {
+    "port": 1337,
+    "config": {}
+  },
+  "client": {
+    "protocol": "http",
+    "host": "localhost",
+    "port": 1337
+  }
+}
