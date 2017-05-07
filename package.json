@@ -25,11 +25,13 @@
   },
   "homepage": "https://github.com/krystianity/schema-registry#readme",
   "dependencies": {
+    "ajv": "^5.0.1",
     "avsc": "^5.0.1",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "request": "^2.81.0",
+    "sinek": "^3.8.0",
     "uuid": "^3.0.1"
   },
   "devDependencies": {

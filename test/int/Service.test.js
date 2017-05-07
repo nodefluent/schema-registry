@@ -10,6 +10,21 @@ describe("Service Integration", function() {
     let server = null;
     let client = null;
 
+    const testSchema = {
+        type: "record",
+        name: "test",
+        fields: [
+            {
+                type: "string",
+                name: "field1"
+            },
+            {
+                type: "int",
+                name: "field2"
+            }
+        ]
+    };
+
     before(function(done){
         client = new RegistryClient(config.client);
         done();
@@ -22,6 +37,18 @@ describe("Service Integration", function() {
 
     it("should be able to start registry", function () {
         server = new Registry(config.registry);
-        return server.listen();
+        return server.run();
+    });
+
+    it("should be able to create schema", function(){
+        return client.registerSubjectVersion("test", testSchema);
+    });
+
+    it("should await the passing of a few milliseconds", function(done){
+        setTimeout(done, 100);
+    });
+
+    it("should be able to receive a list of versions for a topic", function(){
+        return client.getVersionsForSubject("test");
     });
 });
