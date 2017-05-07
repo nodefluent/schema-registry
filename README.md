@@ -9,6 +9,15 @@
 - enhances the experience of [kafka-streams](https://github.com/krystianity/kafka-streams)
 - might also be used in a Kafka unrelated field :star:
 
+
+```
+npm install --save schema-registry
+```
+
+```es6
+const {RegistryClient, Registry} = require("schema-registry");
+```
+
 Schema Registry
 ================
 
