@@ -48,7 +48,7 @@ describe("Service Integration", function() {
 
     it("should await the passing of a few milliseconds", function(done){
         this.timeout(8000);
-        setTimeout(done, !isTravis ? 1950 : 8000);
+        setTimeout(done, !isTravis ? 1950 : 7950);
     });
 
     it("should be able to receive a list of versions for a topic", function(){
