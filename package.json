@@ -1,6 +1,6 @@
 {
   "name": "schema-registry",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "avro schema registry",
   "main": "index.js",
   "scripts": {
