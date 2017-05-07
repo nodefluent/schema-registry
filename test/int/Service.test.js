@@ -3,10 +3,11 @@
 const assert = require("assert");
 
 const {Registry, RegistryClient} = require("./../../index.js");
-const config = require("./../test-config.json");
+const config = require("./../test-config.js");
 
 describe("Service Integration", function() {
 
+    const isTravis = !!process.env.TEST_TOPIC;
     let server = null;
     let client = null;
 
@@ -36,6 +37,7 @@ describe("Service Integration", function() {
     });
 
     it("should be able to start registry", function () {
+        config.registry.kafka.topic = process.env.TEST_TOPIC || config.registry.kafka.topic;
         server = new Registry(config.registry);
         return server.run();
     });
@@ -45,7 +47,8 @@ describe("Service Integration", function() {
     });
 
     it("should await the passing of a few milliseconds", function(done){
-        setTimeout(done, 100);
+        this.timeout(8000);
+        setTimeout(done, !isTravis ? 1950 : 8000);
     });
 
     it("should be able to receive a list of versions for a topic", function(){
