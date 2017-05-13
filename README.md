@@ -1,7 +1,6 @@
 # node-schema-registry
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/nodefluent/schema-registry.svg)](https://greenkeeper.io/)
-[![Build Status](https://travis-ci.org/nodefluent/schema-registry.svg?branch=master)](https://travis-ci.org/krystianity/schema-registry)
+[![Build Status](https://travis-ci.org/nodefluent/schema-registry.svg?branch=master)](https://travis-ci.org/nodefluent/schema-registry)
 
 - still WIP :seedling:
 - json & avro schema registry backed by Kafka :octopus:
