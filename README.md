@@ -1,12 +1,12 @@
 # node-schema-registry
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/krystianity/schema-registry.svg)](https://greenkeeper.io/)
-[![Build Status](https://travis-ci.org/krystianity/schema-registry.svg?branch=master)](https://travis-ci.org/krystianity/schema-registry)
+[![Greenkeeper badge](https://badges.greenkeeper.io/nodefluent/schema-registry.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/nodefluent/schema-registry.svg?branch=master)](https://travis-ci.org/krystianity/schema-registry)
 
 - still WIP :seedling:
 - json & avro schema registry backed by Kafka :octopus:
 - similar to [confluentinc's schema-registry](https://github.com/confluentinc/schema-registry)
-- enhances the experience of [kafka-streams](https://github.com/krystianity/kafka-streams)
+- enhances the experience of [kafka-streams](https://github.com/nodefluent/kafka-streams)
 - might also be used in a Kafka unrelated field :star:
 
 
