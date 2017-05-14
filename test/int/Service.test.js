@@ -143,6 +143,13 @@ describe("Service Integration", function() {
         });
     });
 
+    it("should be able to receive config for subject", function(){
+        return client.getSubjectConfig("test").then(config => {
+            assert.equal(config.phenomenon, "wow");
+            return true;
+        });
+    });
+
     it("should be able to get schema by id", function(){
         return client.getSchemaById(schemaId).then(schema => {
             console.log(schema);
