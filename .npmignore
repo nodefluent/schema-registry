@@ -4,6 +4,6 @@ coverage
 logs
 test
 Dockerfile
-docker-compose.yml
+kafka-setup
 .editorconfig
 .travis.yml

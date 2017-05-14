@@ -42,9 +42,21 @@ describe("Service Integration", function() {
         return server.run();
     });
 
+    /* ### before updates ### */
+
     it("should be able to create schema", function(){
         return client.registerSubjectVersion("test", testSchema);
     });
+
+    it("should be able to update the global config", function(){
+        return client.setConfig({someMore: "123"});
+    });
+
+    it("should be able to update the config of a subject", function(){
+        return client.setSubjectConfig("test", {phenomenon: "wow"});
+    });
+
+    /* ### after updates ### */
 
     it("should await the passing of a few milliseconds", function(done){
         this.timeout(8000);
@@ -53,5 +65,12 @@ describe("Service Integration", function() {
 
     it("should be able to receive a list of versions for a topic", function(){
         return client.getVersionsForSubject("test");
+    });
+
+    it("should be able to receive updated config", function(){
+        client.getConfig().then(config => {
+            assert.equal(config.someMore, "123");
+            return true;
+        });
     });
 });
