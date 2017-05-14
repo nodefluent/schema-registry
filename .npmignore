@@ -3,7 +3,6 @@ docs
 coverage
 logs
 test
-Dockerfile
 kafka-setup
 .editorconfig
 .travis.yml

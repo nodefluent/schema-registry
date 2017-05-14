@@ -56,6 +56,8 @@ npm install -g schema-registry
 ```
 
 ```
-# zookeeper-con-str topic-name registry-port
-node-schema-registry localhost:2181/kafka _node_schema 1337
+# you will need zookeeper + kafka (checkout `/kafka-setup/start.sh` 
+# if you dont have them)
+# node-schema-registry -h
+node-schema-registry -p 1337 -z localhost:2181/ -t _node_schema -l info
 ```

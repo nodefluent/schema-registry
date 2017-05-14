@@ -36,14 +36,19 @@
     "avsc": "^5.0.1",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
+    "commander": "^2.9.0",
     "express": "^4.15.2",
+    "log4bro": "^2.0.1",
     "request": "^2.81.0",
     "sinek": "^3.8.0",
-    "uuid": "^3.0.1",
-    "log4bro": "^2.0.1"
+    "uuid": "^3.0.1"
   },
   "devDependencies": {
     "istanbul": "^0.4.2",
     "mocha": "^3.3.0"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "node-schema-registry": "bin/node-schema-registry.js"
   }
 }
