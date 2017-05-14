@@ -18,10 +18,40 @@ describe("Service Integration", function() {
             {
                 type: "string",
                 name: "field1"
+            }
+        ]
+    };
+
+    const testSchema2 = {
+        type: "record",
+        name: "test",
+        fields: [
+            {
+                type: "string",
+                name: "field1"
             },
             {
                 type: "int",
                 name: "field2"
+            }
+        ]
+    };
+
+    const testSchema3 = {
+        type: "record",
+        name: "test",
+        fields: [
+            {
+                type: "string",
+                name: "field1"
+            },
+            {
+                type: "int",
+                name: "field2"
+            },
+            {
+                type: "int",
+                name: "field3"
             }
         ]
     };
@@ -42,16 +72,47 @@ describe("Service Integration", function() {
         return server.run();
     });
 
+    it("should await the passing of a few milliseconds", function(done){
+        setTimeout(done, 500);
+    });
+
     /* ### before updates ### */
 
     let schemaId = null;
+    let schemaVersion = null;
 
     it("should be able to create schema", function(){
         return client.registerSubjectVersion("test", testSchema)
             .then(result => {
                 console.log(result);
                 assert.equal(typeof result.id, "string");
+                assert.equal(typeof result.version, "string");
                 schemaId = result.id;
+                schemaVersion = result.version;
+                return true;
+            });
+    });
+
+    it("should await the passing of a few milliseconds", function(done){
+        setTimeout(done, 500);
+    });
+
+    it("should be able to create a second version for schema", function(){
+        return client.registerSubjectVersion("test", testSchema2)
+            .then(result => {
+                console.log(result);
+                return true;
+            });
+    });
+
+    it("should await the passing of a few milliseconds", function(done){
+        setTimeout(done, 500);
+    });
+
+    it("should be able to create a third version for schema", function(){
+        return client.registerSubjectVersion("test", testSchema3)
+            .then(result => {
+                console.log(result);
                 return true;
             });
     });
@@ -84,6 +145,35 @@ describe("Service Integration", function() {
 
     it("should be able to get schema by id", function(){
         return client.getSchemaById(schemaId).then(schema => {
+            console.log(schema);
+            return true;
+        });
+    });
+
+    it("should be able to get all subject names", function(){
+        return client.getSubjects().then(names => {
+            console.log(names);
+            assert.equal(names.length, 1);
+            return true;
+        });
+    });
+
+    it("should be able to get a specific version of a subject", function(){
+        return client.getSubjectSchemaForVersion("test", schemaVersion).then(schema => {
+            console.log(schema);
+            return true;
+        });
+    });
+
+    it("should be able to get the latest version of a subject", function(){
+        return client.getLatestSubjectSchema("test").then(schema => {
+            console.log(schema);
+            return true;
+        });
+    });
+
+    it("should be able to check if a schema is already registered under a subject", function(){
+        return client.checkSubjectRegistration("test", testSchema2).then(schema => {
             console.log(schema);
             return true;
         });
