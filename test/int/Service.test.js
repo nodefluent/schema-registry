@@ -44,16 +44,20 @@ describe("Service Integration", function() {
 
     /* ### before updates ### */
 
+    let schemaId = null;
+
     it("should be able to create schema", function(){
-        return client.registerSubjectVersion("test", testSchema);
+        return client.registerSubjectVersion("test", testSchema)
+            .then(result => {
+                console.log(result);
+                assert.equal(typeof result.id, "string");
+                schemaId = result.id;
+                return true;
+            });
     });
 
     it("should be able to update the global config", function(){
         return client.setConfig({someMore: "123"});
-    });
-
-    it("should be able to update the config of a subject", function(){
-        return client.setSubjectConfig("test", {phenomenon: "wow"});
     });
 
     /* ### after updates ### */
@@ -63,13 +67,24 @@ describe("Service Integration", function() {
         setTimeout(done, !isTravis ? 1950 : 7950);
     });
 
+    it("should be able to update the config of a subject", function(){
+        return client.setSubjectConfig("test", {phenomenon: "wow"});
+    });
+
     it("should be able to receive a list of versions for a topic", function(){
         return client.getVersionsForSubject("test");
     });
 
     it("should be able to receive updated config", function(){
-        client.getConfig().then(config => {
+        return client.getConfig().then(config => {
             assert.equal(config.someMore, "123");
+            return true;
+        });
+    });
+
+    it("should be able to get schema by id", function(){
+        return client.getSchemaById(schemaId).then(schema => {
+            console.log(schema);
             return true;
         });
     });
