@@ -2,7 +2,7 @@
 
 const assert = require("assert");
 
-const {Registry, RegistryClient} = require("./../../index.js");
+const {Registry, RegistryClient, LivingAvroSchema} = require("./../../index.js");
 const config = require("./../test-config.js");
 
 describe("Service Integration", function() {
@@ -182,6 +182,36 @@ describe("Service Integration", function() {
     it("should be able to check if a schema is already registered under a subject", function(){
         return client.checkSubjectRegistration("test", testSchema2).then(schema => {
             console.log(schema);
+            return true;
+        });
+    });
+
+    /* ### living schema ### */
+
+    it("should be able to create, fetch and use a living schema", function(){
+
+        const livingSchema = new LivingAvroSchema("test", "latest", config.client);
+
+        let called = false;
+        livingSchema.on("new-version", schema => {
+            console.log(schema);
+            called = true;
+        });
+
+        return livingSchema.fetch().then(_ => {
+
+            const someObject = {
+                field1: "bla",
+                field2: 5,
+                field3: 55
+            };
+
+            const buffer = livingSchema.toBuffer(someObject);
+            const result = livingSchema.fromBuffer(buffer);
+            console.log(buffer, result);
+
+            assert.deepEqual(someObject, result);
+            assert.equal(called, true);
             return true;
         });
     });

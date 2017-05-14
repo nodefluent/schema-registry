@@ -7,22 +7,16 @@
 - in BETA :seedling:
 - avro & json schema registry backed by Kafka :octopus:
 - API similar to [confluentinc's schema-registry](https://github.com/confluentinc/schema-registry)
-- enhances the experience of [kafka-streams](https://github.com/nodefluent/kafka-streams)
+- enhances the experience of [node-kafka-streams](https://github.com/nodefluent/kafka-streams)
+- enables [node-kafka-connect](https://github.com/nodefluent/kafka-connect)
 - might also be used in a Kafka unrelated field :star:
 - ships with a neat `RegistryClient`
 - checkout [API Quickstart](docs/api.md)
+- compatibility options are currently disabled
+- `LivingAvroSchema` and `LivingJsonSchema` allow for real-time schema updates
+in running services
 
-
-```
-npm install --save schema-registry
-```
-
-```es6
-const {RegistryClient, Registry} = require("schema-registry");
-```
-
-Schema Registry
-================
+## What is a Schema Registry?
 
 Schema Registry provides a serving layer for your metadata. It provides a
 RESTful interface for storing and retrieving Avro schemas. It stores a versioned
@@ -30,3 +24,38 @@ history of all schemas, provides multiple compatibility settings and allows
 evolution of schemas according to the configured compatibility setting. It
 provides serializers that plug into Kafka clients that handle schema storage and
 retrieval for Kafka messages that are sent in the Avro format.
+
+## Code Wise (Dev)
+
+```
+npm install --save schema-registry
+```
+
+```es6
+const {RegistryClient, Registry, LivingAvroSchema} = require("schema-registry");
+const registryClient = new RegistryClient({port: 1337});
+registryClient.getLatestSubjectSchema("test-subject").then(schema => {..});
+```
+
+## Living Schemas
+
+```es6
+const {LivingAvroSchema} = require("schema-registry");
+const livingSchema = new LivingAvroSchema("test", "latest", {port: 1337});
+livingSchema.on("new-version", console.log);
+livingSchema.fetch().then(_ => {
+    const buffer = livingSchema.toBuffer(someObject);
+    const equalToSomeObject = livingSchema.fromBuffer(buffer);
+});
+```
+
+## Run a Registry (Ops) (Quicksetup)
+
+```
+npm install -g schema-registry
+```
+
+```
+# zookeeper-con-str topic-name registry-port
+node-schema-registry localhost:2181/kafka _node_schema 1337
+```

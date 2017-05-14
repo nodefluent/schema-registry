@@ -1,6 +1,6 @@
 {
   "name": "schema-registry",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "avro schema registry",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,14 @@
     "avro",
     "json",
     "rest",
-    "kafka"
+    "kafka",
+    "living",
+    "version",
+    "etl",
+    "avsc",
+    "ajv",
+    "format",
+    "type"
   ],
   "author": "Chris Froehlingsdorf <chris@5cf.de>",
   "license": "MIT",
