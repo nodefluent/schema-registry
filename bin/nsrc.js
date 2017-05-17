@@ -44,15 +44,15 @@ program
     .parse(process.argv);
 
 if(program.port){
-    config.port = program.port;
+    config.port = parseInt(program.port);
 }
 
 if(program.host){
-    config.port = program.host;
+    config.host = program.host;
 }
 
 if(program.protocol){
-    config.port = program.protocol
+    config.protocol = program.protocol
 }
 
 if(program.loglevel){

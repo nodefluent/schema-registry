@@ -1,7 +1,7 @@
 {
   "name": "schema-registry",
-  "version": "1.16.0",
-  "description": "avro schema registry",
+  "version": "1.17.0",
+  "description": "json & avro schema registry",
   "main": "index.js",
   "scripts": {
     "test": "istanbul cover _mocha -- --recursive --timeout 12500 -R spec test/int && istanbul check-coverage --statements 60"
