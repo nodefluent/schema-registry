@@ -12,6 +12,8 @@
     "serviceName": "node-schema-registry"
   },
   "port": 12426,
+  "host": "localhost",
+  "protocol": "http",
   "config": {},
   "kafka": {
     "topic": "_node_schema",

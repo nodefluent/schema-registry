@@ -56,8 +56,13 @@ npm install -g schema-registry
 ```
 
 ```
-# you will need zookeeper + kafka (checkout `/kafka-setup/start.sh` 
+# you will need zookeeper + kafka (checkout `/kafka-setup/start.sh`
 # if you dont have them)
 # node-schema-registry -h
 node-schema-registry -p 1337 -z localhost:2181/ -t _node_schema -l info
+```
+
+## Using the registry CLI Client
+```
+nsrc --host localhost -p 1337 -s -e getSchemaById -a e707463d-0c3d-4010-afed-0d53c77e3605 -v
 ```
