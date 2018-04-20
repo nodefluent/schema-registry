@@ -4,6 +4,9 @@
 
 [![Build Status](https://travis-ci.org/nodefluent/schema-registry.svg?branch=master)](https://travis-ci.org/nodefluent/schema-registry)
 
+> DISCLAIMER: We encourage you to keep your topics dynamic and JSON only, when choosing to go the Node.js Kafka way.
+Therefore we are no longer adding features to this registry project. When you are looking for a typed (schema-requirement) approach we suggest using Confluent's schema-registry with AVRO.
+
 - in BETA :seedling:
 - avro & json schema registry backed by Kafka :octopus:
 - API similar to [confluentinc's schema-registry](https://github.com/confluentinc/schema-registry)
