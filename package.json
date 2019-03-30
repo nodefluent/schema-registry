@@ -40,7 +40,7 @@
     "express": "^4.15.2",
     "log4bro": "^3.0.0",
     "request": "^2.81.0",
-    "sinek": "^6.0.0",
+    "sinek": "^7.29.1",
     "uuid": "^3.0.1"
   },
   "devDependencies": {
