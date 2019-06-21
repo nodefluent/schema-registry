@@ -1,55 +1,56 @@
 {
-  "name": "schema-registry",
-  "version": "1.17.0",
-  "description": "json & avro schema registry",
-  "main": "index.js",
-  "scripts": {
-    "test": "istanbul cover _mocha -- --recursive --timeout 12500 -R spec test/int && istanbul check-coverage --statements 60"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nodefluent/schema-registry.git"
-  },
-  "keywords": [
-    "schema",
-    "registry",
-    "avro",
-    "json",
-    "rest",
-    "kafka",
-    "living",
-    "version",
-    "etl",
-    "avsc",
-    "ajv",
-    "format",
-    "type"
-  ],
-  "author": "Chris Froehlingsdorf <chris@5cf.de>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/nodefluent/schema-registry/issues"
-  },
-  "homepage": "https://github.com/nodefluent/schema-registry#readme",
-  "dependencies": {
-    "ajv": "^5.2.2",
-    "avsc": "^5.0.1",
-    "bluebird": "^3.5.0",
-    "body-parser": "^1.17.1",
-    "commander": "^2.9.0",
-    "express": "^4.15.2",
-    "log4bro": "^3.0.0",
-    "request": "^2.81.0",
-    "sinek": "^6.0.0",
-    "uuid": "^3.0.1"
-  },
-  "devDependencies": {
-    "istanbul": "^0.4.2",
-    "mocha": "^4.0.0"
-  },
-  "preferGlobal": true,
-  "bin": {
-    "node-schema-registry": "bin/node-schema-registry.js",
-    "nsrc": "bin/nsrc.js"
-  }
+    "name": "schema-registry",
+    "version": "1.18.0",
+    "description": "json & avro schema registry",
+    "main": "index.js",
+    "scripts": {
+        "yarn:openssl": "LDFLAGS='-L/usr/local/opt/openssl/lib' CPPFLAGS='-I/usr/local/opt/openssl/include' yarn",
+        "test": "istanbul cover _mocha -- --recursive --timeout 12500 -R spec test/int && istanbul check-coverage --statements 60"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nodefluent/schema-registry.git"
+    },
+    "keywords": [
+        "schema",
+        "registry",
+        "avro",
+        "json",
+        "rest",
+        "kafka",
+        "living",
+        "version",
+        "etl",
+        "avsc",
+        "ajv",
+        "format",
+        "type"
+    ],
+    "author": "Chris Froehlingsdorf <chris@5cf.de>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/nodefluent/schema-registry/issues"
+    },
+    "homepage": "https://github.com/nodefluent/schema-registry#readme",
+    "dependencies": {
+        "ajv": "^6.10.0",
+        "avsc": "^5.4.11",
+        "bluebird": "^3.5.5",
+        "body-parser": "^1.19.0",
+        "commander": "^2.20.0",
+        "express": "^4.17.1",
+        "log4bro": "^3.10.0",
+        "request": "^2.88.0",
+        "sinek": "^7.29.3",
+        "uuid": "^3.3.2"
+    },
+    "devDependencies": {
+        "istanbul": "^0.4.5",
+        "mocha": "^6.1.4"
+    },
+    "preferGlobal": true,
+    "bin": {
+        "node-schema-registry": "bin/node-schema-registry.js",
+        "nsrc": "bin/nsrc.js"
+    }
 }
